@@ -2,344 +2,148 @@ import { useState } from "react";
 
 const chains = [
   {
-    id: "base", name: "Base", phase: "NOW", status: "Live Mainnet",
-    buildTask: "Ship a small dApp to Base mainnet — a stripped-down Polymarket scanner or prediction tool. Then nominate for Builder Grant.",
+    id: "base", name: "Base", phase: "NOW", status: "Mainnet / L2",
+    buildTask: "Focus on 'Onchain Summer' vibes. Deploy to Base Sepolia (Testnet) first to keep it $0.",
+    suggestions: [
+      "Based Feedback: A simple dApp where users sign a message to leave feedback for a brand.",
+      "Micro-Tip Jar: A smart contract that allows anyone to send 0.0001 ETH tips on testnet.",
+      "Frame-ready Poll: A simple voting contract designed to be turned into a Farcaster Frame."
+    ],
     sessions: [
-      { duration: "40min", label: "Setup Base wallet + deploy Hello World contract on Base Sepolia testnet" },
-      { duration: "1hr", label: "Read Base Builder Grants docs + outline your project idea" },
-      { duration: "2hr", label: "Build + deploy your MVP dApp to Base mainnet" },
+      { duration: "30min", label: "Get Base Sepolia ETH from faucet + deploy first contract" },
+      { duration: "1hr", label: "Integrate OnchainKit for easy 'Connect Wallet' button" },
+      { duration: "2hr", label: "Build a frontend that reads data from your Base contract" },
     ],
     content: [
-      { type: "Thread", platform: "X", title: "\"I just deployed my first dApp on Base — here's what I learned in 2 hours\"", hook: "Personal builder story, include screenshots" },
-      { type: "Thread", platform: "X", title: "\"Base Builder Grants are real — here's how to qualify as a solo builder\"", hook: "Break down the grant tiers + your plan" },
-      { type: "Short Post", platform: "LinkedIn", title: "\"Building on Base as a solo Web3 dev from Lagos — my honest experience\"", hook: "Authentic story, geographic angle lands well on LinkedIn" },
-      { type: "Clip", platform: "X", title: "Screen record your deploy + tweet the clip with commentary", hook: "\"Shipped. Base mainnet. Solo builder.\"" },
+      { type: "Thread", platform: "X", title: "Why I'm building on Base as a solo dev", hook: "Low fees, high builder energy." },
+      { type: "Clip", platform: "TikTok", title: "My 2-hour Base build speedrun", hook: "Fastest deployment in L2 history." },
     ],
   },
   {
     id: "genlayer", name: "GenLayer", phase: "SOON", status: "Incentivized Testnet",
-    buildTask: "Join the testnet, write a Python Intelligent Contract that resolves a prediction using live web data. Target: sports result or crypto price.",
+    buildTask: "Use 'Intelligent Contracts' (Python) to connect the web to the blockchain for free.",
+    suggestions: [
+      "Weather Bet: A contract that settles based on the temperature in Lagos today (via OpenWeather API).",
+      "X-Post Verifier: A contract that only releases 'points' if it finds a specific tweet/post.",
+      "AI News Judge: A contract that reads a news headline and uses an LLM to decide if it's 'Bullish' or 'Bearish'."
+    ],
     sessions: [
-      { duration: "40min", label: "Read GenLayer docs + understand Intelligent Contracts concept" },
-      { duration: "1hr", label: "Set up local GenLayer studio + run example contract" },
-      { duration: "2hr", label: "Write + deploy your own Intelligent Contract (prediction market resolver)" },
+      { duration: "45min", label: "Run GenLayer Studio locally using Docker" },
+      { duration: "1hr", label: "Write a Python contract that uses 'gl.get_webpage'" },
+      { duration: "2hr", label: "Deploy a 'Web-to-Chain' resolver on the incentivized testnet" },
     ],
     content: [
-      { type: "Thread", platform: "X", title: "\"GenLayer just made prediction markets smarter — no oracles, just AI\"", hook: "Explain Intelligent Contracts in plain terms" },
-      { type: "Thread", platform: "X", title: "\"I wrote a Python contract that settles sports bets using live data — here's how\"", hook: "Builder thread with code snippets + screenshots" },
-      { type: "Short Post", platform: "LinkedIn", title: "\"AI + Blockchain is real. I just built it on GenLayer testnet.\"", hook: "Professional tone, tag the GenLayer team" },
-      { type: "Clip", platform: "X", title: "Screen record the contract resolving a real outcome", hook: "\"AI settled a bet on-chain. No oracle. No middleman.\"" },
+      { type: "Thread", platform: "X", title: "Blockchain without Oracles? Testing GenLayer", hook: "The internet is now a data source." },
+      { type: "Short Post", platform: "LinkedIn", title: "The rise of Intelligent Contracts", hook: "Python meets Blockchain." },
     ],
   },
   {
-    id: "opengradient", name: "OpenGradient", phase: "SOON", status: "Devnet Live",
-    buildTask: "Deploy a verifiable AI inference model on devnet. Start with their LangChain integration or SolidML to call an AI model from a smart contract.",
+    id: "opengradient", name: "OpenGradient", phase: "SOON", status: "Devnet",
+    buildTask: "Build 'On-Chain AI' tools using their free devnet resources.",
+    suggestions: [
+      "AI Sentiment Tracker: A tool that takes a crypto ticker and returns an AI sentiment score on-chain.",
+      "Verifiable Prompt: A dApp where you input a prompt and get a signed AI response on-chain.",
+      "Code Auditor Bot: A simple AI model call that checks a Solidity snippet for obvious bugs."
+    ],
     sessions: [
-      { duration: "40min", label: "Read OpenGradient devnet docs + explore model registry" },
-      { duration: "1hr", label: "Deploy a model inference call from a Solidity contract on devnet" },
-      { duration: "2hr", label: "Build a simple AI trading signal tool or content-scoring tool using OG inference" },
+      { duration: "40min", label: "Explore the OpenGradient Model Registry" },
+      { duration: "1hr", label: "Call an AI model inference from a Solidity script" },
+      { duration: "2hr", label: "Build a UI that displays the 'Verifiable AI' result" },
     ],
     content: [
-      { type: "Thread", platform: "X", title: "\"You can now call an AI model from a smart contract. OpenGradient just changed the game.\"", hook: "Explain the concept, use a clear analogy" },
-      { type: "Thread", platform: "X", title: "\"I built an on-chain AI signal tool in 2 hours — here's the breakdown\"", hook: "Builder thread: problem → build → result" },
-      { type: "Short Post", platform: "LinkedIn", title: "\"On-chain AI inference is live. I tested it. Here's what devs need to know.\"", hook: "Positioning as an informed early builder" },
-      { type: "Clip", platform: "X", title: "Show the contract call returning an AI output on-chain", hook: "\"AI inference. On-chain. Verifiable.\"" },
-    ],
-  },
-  {
-    id: "arcium", name: "Arcium", phase: "WATCH", status: "Mainnet Alpha — Full TGE Q1 2026",
-    buildTask: "Learn the Arcis language (Rust-based). Build a confidential computation proof-of-concept — a private wallet scanner or dark pool order concept.",
-    sessions: [
-      { duration: "40min", label: "Read Arcium whitepaper + understand MXEs (Multiparty Execution Environments)" },
-      { duration: "1hr", label: "Set up Rust dev environment + run Arcium hello world" },
-      { duration: "2hr", label: "Build a simple confidential compute demo — private score calculator or hidden balance aggregator" },
-    ],
-    content: [
-      { type: "Thread", platform: "X", title: "\"Blockchains are transparent by default. Arcium makes them private by design.\"", hook: "Explain the privacy gap + Arcium's solution" },
-      { type: "Thread", platform: "X", title: "\"I tried building on Arcium. Here's what confidential compute actually means for DeFi builders\"", hook: "Honest builder take — technical but accessible" },
-      { type: "Short Post", platform: "LinkedIn", title: "\"Privacy-preserving computation on blockchain is closer than you think — my Arcium build log\"", hook: "Niche but strong signal for Web3 professionals" },
-      { type: "Clip", platform: "X", title: "Explain Arcium MXEs in a 60-second screen + voice clip", hook: "\"Encrypted computation. Trustless. On-chain.\"" },
-    ],
-  },
-  {
-    id: "rialo", name: "Rialo", phase: "WATCH", status: "Pre-Mainnet — Whitelist Open",
-    buildTask: "Join the builder whitelist now. When devnet opens, build a real-world data dApp — healthcare access tool or micro-lending app using native web connectivity.",
-    sessions: [
-      { duration: "40min", label: "Read Rialo docs + understand RISC-V contract architecture + web connectivity" },
-      { duration: "1hr", label: "Join whitelist + engage with Rialo team on Discord/X — positioning matters at this stage" },
-      { duration: "2hr", label: "Draft your dApp concept + write a public builder thread about what you plan to build on Rialo" },
-    ],
-    content: [
-      { type: "Thread", platform: "X", title: "\"Rialo isn't a Layer 1 — and that's exactly why it's interesting\"", hook: "Decode the name + the vision. Early alpha content." },
-      { type: "Thread", platform: "X", title: "\"5 dApps I want to build on Rialo when devnet drops\"", hook: "Speculative builder content — positions you as ecosystem-aware" },
-      { type: "Short Post", platform: "LinkedIn", title: "\"Pantera + Coinbase backed this chain. I joined the whitelist. Here's why.\"", hook: "FOMO + credibility signal for LinkedIn audience" },
-      { type: "Clip", platform: "X", title: "60-sec clip explaining what makes Rialo different from other L1s", hook: "\"No oracle. Native web access. Real-world data on-chain.\"" },
+      { type: "Clip", platform: "X", title: "Running AI models on-chain (No joke)", hook: "Verifiable inference is finally here." },
+      { type: "Thread", platform: "X", title: "OpenGradient vs. Centralized AI", hook: "Why decentralized AI matters for the future." },
     ],
   },
 ];
 
-const phaseOrder = { NOW: 0, SOON: 1, WATCH: 2 };
-const phaseLabel = { NOW: "Build Now", SOON: "Build Soon", WATCH: "Watch & Position" };
-
 const themes = {
-  light: {
-    bg: "#f5f5f0",
-    surface: "#ffffff",
-    border: "#e5e5e0",
-    borderStrong: "#d0d0c8",
-    text: "#111",
-    textMid: "#555",
-    textFaint: "#999",
-    accent: "#2563eb",
-    accentFaint: "#eff4ff",
-    accentBorder: "#bfdbfe",
-    toggleBg: "#e5e5e0",
-    progressBg: "#e5e5e0",
-    sessionBg: "#fafaf8",
-    doneBg: "#f5f5f0",
-  },
   dark: {
-    bg: "#000",
-    surface: "#050505",
-    border: "#1a1a1a",
-    borderStrong: "#222",
-    text: "#fff",
-    textMid: "#666",
-    textFaint: "#333",
-    accent: "#2563eb",
-    accentFaint: "#0a1628",
-    accentBorder: "#1e3a5f",
-    toggleBg: "#111",
-    progressBg: "#111",
-    sessionBg: "#080808",
-    doneBg: "#0a0a0a",
-  },
+    bg: "#0A0A0A", surface: "#141414", border: "#222", 
+    text: "#E5E5E5", textMid: "#888", accent: "#3B82F6",
+    card: "#1A1A1A",
+  }
 };
 
 export default function BuilderRoadmap() {
   const [active, setActive] = useState("base");
   const [tab, setTab] = useState("build");
-  const [completed, setCompleted] = useState({});
-  const [isDark, setIsDark] = useState(false);
-
-  const t = isDark ? themes.dark : themes.light;
+  const t = themes.dark;
   const current = chains.find(c => c.id === active);
-  const sorted = [...chains].sort((a, b) => phaseOrder[a.phase] - phaseOrder[b.phase]);
-  const toggle = (key) => setCompleted(prev => ({ ...prev, [key]: !prev[key] }));
-
-  const getProgress = (chain) => {
-    const total = chain.sessions.length + chain.content.length;
-    const done =
-      chain.sessions.filter((_, i) => completed[`${chain.id}-build-${i}`]).length +
-      chain.content.filter((_, i) => completed[`${chain.id}-content-${i}`]).length;
-    return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
-  };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: t.bg, minHeight: "100vh", color: t.text, transition: "background 0.2s, color 0.2s" }}>
-
-      {/* Layout */}
-      <div style={{ display: "flex", minHeight: "100vh" }}>
-
-        {/* Sidebar */}
-        <div style={{ width: 220, flexShrink: 0, borderRight: `1px solid ${t.border}`, display: "flex", flexDirection: "column", padding: "24px 0" }}>
-          <div style={{ padding: "0 20px 20px", borderBottom: `1px solid ${t.border}` }}>
-            <div style={{ fontSize: 10, color: t.textFaint, letterSpacing: "0.15em", marginBottom: 6 }}>SIMON PROSPER</div>
-            <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14 }}>Builder Roadmap</div>
-            <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-              {["NOW", "SOON", "WATCH"].map(p => (
-                <div key={p} style={{
-                  fontSize: 9, letterSpacing: "0.1em", padding: "3px 8px",
-                  border: `1px solid ${p === "NOW" ? t.accent : t.border}`,
-                  borderRadius: 4, color: p === "NOW" ? t.accent : t.textMid,
-                }}>{p}</div>
-              ))}
-            </div>
-          </div>
-
-          {/* Chain list */}
-          <div style={{ flex: 1, padding: "12px 0" }}>
-            {sorted.map(chain => {
-              const isActive = active === chain.id;
-              return (
-                <button key={chain.id} onClick={() => { setActive(chain.id); setTab("build"); }} style={{
-                  width: "100%", background: isActive ? t.accentFaint : "none",
-                  border: "none", borderLeft: `2px solid ${isActive ? t.accent : "transparent"}`,
-                  padding: "10px 20px", cursor: "pointer", display: "flex",
-                  justifyContent: "space-between", alignItems: "center",
-                  color: isActive ? t.text : t.textMid, fontSize: 13,
-                  fontWeight: isActive ? 600 : 400, fontFamily: "inherit",
-                  transition: "all 0.15s",
-                }}>
-                  {chain.name}
-                  <span style={{
-                    fontSize: 9, letterSpacing: "0.08em",
-                    color: chain.phase === "NOW" ? t.accent : chain.phase === "SOON" ? t.textMid : t.textFaint,
-                  }}>{chain.phase}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Progress + toggle */}
-          <div style={{ padding: "16px 20px", borderTop: `1px solid ${t.border}` }}>
-            <div style={{ fontSize: 10, color: t.textFaint, letterSpacing: "0.12em", marginBottom: 10 }}>PROGRESS</div>
-            {sorted.map(chain => {
-              const { pct } = getProgress(chain);
-              return (
-                <div key={chain.id} style={{ marginBottom: 7 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                    <span style={{ fontSize: 10, color: active === chain.id ? t.text : t.textFaint }}>{chain.name}</span>
-                    <span style={{ fontSize: 10, color: t.textFaint }}>{pct}%</span>
-                  </div>
-                  <div style={{ background: t.progressBg, borderRadius: 2, height: 3, overflow: "hidden" }}>
-                    <div style={{ width: `${pct}%`, height: "100%", background: t.accent, borderRadius: 2, transition: "width 0.4s" }} />
-                  </div>
-                </div>
-              );
-            })}
-
-            {/* Dark/light toggle */}
-            <button onClick={() => setIsDark(!isDark)} style={{
-              marginTop: 16, width: "100%", background: t.toggleBg,
-              border: `1px solid ${t.border}`, borderRadius: 6, padding: "8px 12px",
-              cursor: "pointer", color: t.textMid, fontSize: 11,
-              fontFamily: "inherit", display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-              transition: "all 0.2s",
-            }}>
-              {isDark ? "☀ Light Mode" : "☾ Dark Mode"}
+    <div style={{ display: "flex", minHeight: "100vh", background: t.bg, color: t.text, fontFamily: "Inter, sans-serif" }}>
+      
+      {/* Sidebar */}
+      <aside style={{ width: "260px", borderRight: `1px solid ${t.border}`, padding: "40px 20px" }}>
+        <h2 style={{ fontSize: "14px", letterSpacing: "2px", color: t.textMid, marginBottom: "40px" }}>COMMAND CENTER</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          {chains.map(c => (
+            <button 
+              key={c.id}
+              onClick={() => setActive(c.id)}
+              style={{
+                textAlign: "left", padding: "12px 16px", borderRadius: "8px", cursor: "pointer",
+                background: active === c.id ? t.card : "transparent",
+                border: "none", color: active === c.id ? t.accent : t.textMid,
+                fontWeight: active === c.id ? "600" : "400", transition: "0.2s"
+              }}
+            >
+              {c.name} <span style={{ fontSize: "10px", opacity: 0.6 }}>— {c.phase}</span>
             </button>
-          </div>
+          ))}
         </div>
+      </aside>
 
-        {/* Main panel */}
-        <div style={{ flex: 1, padding: "28px 32px", overflowY: "auto" }}>
+      {/* Main Content */}
+      <main style={{ flex: 1, padding: "60px", maxWidth: "900px" }}>
+        <header style={{ marginBottom: "40px" }}>
+          <h1 style={{ fontSize: "32px", fontWeight: "800", marginBottom: "8px" }}>{current.name}</h1>
+          <p style={{ color: t.textMid, fontSize: "16px" }}>{current.status} • {current.buildTask}</p>
+        </header>
 
-          {/* Chain header */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 16 }}>
-            <div>
-              <div style={{ fontSize: 24, fontWeight: 700, marginBottom: 4 }}>{current.name}</div>
-              <div style={{ fontSize: 12, color: t.textMid }}>{current.status}</div>
-            </div>
-            <div style={{
-              fontSize: 11, border: `1px solid ${current.phase === "NOW" ? t.accent : t.border}`,
-              borderRadius: 5, padding: "7px 14px",
-              color: current.phase === "NOW" ? t.accent : t.textMid,
-              background: current.phase === "NOW" ? t.accentFaint : "none",
-            }}>
-              {phaseLabel[current.phase]}
-            </div>
-          </div>
-
-          <div style={{ fontSize: 13, color: t.textMid, lineHeight: 1.7, marginBottom: 24, paddingBottom: 20, borderBottom: `1px solid ${t.border}` }}>
-            {current.buildTask}
-          </div>
-
-          {/* Sub-tabs */}
-          <div style={{ display: "flex", gap: 6, marginBottom: 20 }}>
-            {[{ id: "build", label: "Build Sessions" }, { id: "content", label: "Content Queue" }].map(tb => (
-              <button key={tb.id} onClick={() => setTab(tb.id)} style={{
-                background: tab === tb.id ? t.accent : "none",
-                border: `1px solid ${tab === tb.id ? t.accent : t.border}`,
-                borderRadius: 6, padding: "8px 18px",
-                cursor: "pointer", color: tab === tb.id ? "#fff" : t.textMid,
-                fontSize: 12, fontFamily: "inherit", fontWeight: tab === tb.id ? 600 : 400,
-                transition: "all 0.15s",
-              }}>
-                {tb.label}
-              </button>
+        {/* Suggestions Section */}
+        <section style={{ marginBottom: "40px", background: t.card, padding: "24px", borderRadius: "12px", border: `1px solid ${t.border}` }}>
+          <h3 style={{ fontSize: "14px", color: t.accent, marginBottom: "16px" }}>$0 BUILD SUGGESTIONS</h3>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            {current.suggestions.map((s, i) => (
+              <li key={i} style={{ marginBottom: "12px", fontSize: "14px", display: "flex", gap: "10px" }}>
+                <span style={{ color: t.accent }}>•</span> {s}
+              </li>
             ))}
-          </div>
+          </ul>
+        </section>
 
-          {/* Build sessions */}
-          {tab === "build" && (
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {current.sessions.map((s, i) => {
-                const key = `${current.id}-build-${i}`;
-                const done = completed[key];
-                return (
-                  <div key={i} onClick={() => toggle(key)} style={{
-                    display: "flex", alignItems: "flex-start", gap: 16,
-                    background: done ? t.doneBg : t.sessionBg,
-                    border: `1px solid ${t.border}`,
-                    borderRadius: 8, padding: "16px 18px",
-                    cursor: "pointer", opacity: done ? 0.4 : 1,
-                    transition: "opacity 0.2s",
-                  }}>
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, flexShrink: 0 }}>
-                      <div style={{
-                        width: 24, height: 24, borderRadius: "50%",
-                        border: `1.5px solid ${done ? t.border : t.accent}`,
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        fontSize: 10, color: done ? t.textFaint : t.accent,
-                      }}>
-                        {done ? "✓" : i + 1}
-                      </div>
-                      <div style={{
-                        background: t.accent, borderRadius: 3,
-                        padding: "2px 7px", fontSize: 9, color: "#fff", letterSpacing: "0.06em",
-                      }}>
-                        {s.duration}
-                      </div>
-                    </div>
-                    <div style={{ fontSize: 13, color: done ? t.textFaint : t.text, lineHeight: 1.65, paddingTop: 4 }}>
-                      {s.label}
-                    </div>
-                  </div>
-                );
-              })}
-              <div style={{ fontSize: 11, color: t.textFaint, textAlign: "center", marginTop: 6 }}>Click a session to mark complete</div>
-            </div>
-          )}
-
-          {/* Content queue */}
-          {tab === "content" && (
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {current.content.map((c, i) => {
-                const key = `${current.id}-content-${i}`;
-                const done = completed[key];
-                return (
-                  <div key={i} style={{
-                    background: t.sessionBg, border: `1px solid ${t.border}`,
-                    borderRadius: 8, padding: "16px 18px",
-                    opacity: done ? 0.35 : 1, transition: "opacity 0.2s",
-                  }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
-                      <span style={{
-                        fontSize: 10, border: `1px solid ${t.accentBorder}`,
-                        borderRadius: 3, padding: "2px 8px", color: t.accent,
-                        background: t.accentFaint, letterSpacing: "0.06em",
-                      }}>{c.type}</span>
-                      <span style={{
-                        fontSize: 10, border: `1px solid ${t.border}`,
-                        borderRadius: 3, padding: "2px 8px", color: t.textMid, letterSpacing: "0.06em",
-                      }}>{c.platform}</span>
-                      <button onClick={() => toggle(key)} style={{
-                        marginLeft: "auto", background: "none",
-                        border: `1px solid ${done ? t.border : t.accent}`,
-                        borderRadius: 5, padding: "4px 12px", fontSize: 10,
-                        color: done ? t.textFaint : t.accent, cursor: "pointer", fontFamily: "inherit",
-                      }}>
-                        {done ? "Undo" : "Mark Posted"}
-                      </button>
-                    </div>
-                    <div style={{ fontSize: 13, color: t.text, fontWeight: 500, marginBottom: 8, lineHeight: 1.6 }}>
-                      {c.title}
-                    </div>
-                    <div style={{ fontSize: 11, color: t.textMid, lineHeight: 1.6, borderTop: `1px solid ${t.border}`, paddingTop: 10 }}>
-                      {c.hook}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          <div style={{ textAlign: "center", marginTop: 36, fontSize: 10, color: t.textFaint, letterSpacing: "0.2em" }}>
-            LEARNING → RELEARNING → GROWING
-          </div>
+        {/* Tab Switcher */}
+        <div style={{ display: "flex", gap: "20px", marginBottom: "30px", borderBottom: `1px solid ${t.border}` }}>
+          {["build", "content"].map(type => (
+            <button 
+              key={type}
+              onClick={() => setTab(type)}
+              style={{
+                background: "none", border: "none", color: tab === type ? t.text : t.textMid,
+                paddingBottom: "12px", cursor: "pointer", borderBottom: tab === type ? `2px solid ${t.accent}` : "none",
+                textTransform: "uppercase", fontSize: "12px", fontWeight: "600"
+              }}
+            >
+              {type === "build" ? "Execution Plan" : "Social Content"}
+            </button>
+          ))}
         </div>
-      </div>
+
+        {/* Action Items */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+          {(tab === "build" ? current.sessions : current.content).map((item, i) => (
+            <div key={i} style={{ background: t.card, padding: "20px", borderRadius: "10px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <div style={{ fontSize: "15px", fontWeight: "500", marginBottom: "4px" }}>{item.label || item.title}</div>
+                <div style={{ fontSize: "12px", color: t.textMid }}>{item.duration || item.platform} — {item.hook || "Focus on quality."}</div>
+              </div>
+              <div style={{ width: "20px", height: "20px", borderRadius: "4px", border: `2px solid ${t.border}` }} />
+            </div>
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
